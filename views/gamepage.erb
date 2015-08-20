@@ -32,12 +32,11 @@
   </form>
 </div>
 <div>
-  <% if @win == true%>
-    <h1>And the winner is...You!</h1>
-    <h3>Computer Played <%= @comp_choice %><h3>
-  <% elsif @win == false %>
-    <h1>And the winner is...Computer. Computer Played <%= @comp_choice %>!</h1>
-  <% elsif @win == "Draw" %>
+  <% if $game.winner == $game.player1%>
+    <h1>And the winner is...<%=@name%></h1>
+  <% elsif $game.winner == $game.player2%>
+    <h1>And the winner is...Computer. </h1>
+  <% elsif @outcome == "Draw" %>
     <h1>And the winner is...Draw! Try again!</h1>
   <% end %>
 </div>

@@ -1,25 +1,26 @@
+require_relative 'player'
+require_relative 'computer'
 class Game
-  attr_reader :user, :computer, :winner, :winning_pairs
-  def initialize
-    @winning_pairs = [[:Paper, :Rock],[:Scissors, :Paper],[:Rock, :Scissors]]
-    @user
-    @computer
+  attr_reader :winning_pairs
+  attr_accessor :player1, :player2, :winner
+  def initialize(player1 = Player.new, player2 = Computer.new)
+    @player1 = player1
+    @player2 = player2
+    @winning_pairs = [[:paper, :rock],[:scissors, :paper],[:rock, :scissors]]
     @winner
-    @draw
-  end
-
-  def selection(choice)
-    @user = choice.to_sym
-  end
-
-  def computer_choice
-    @computer = [:Paper, :Scissors, :Rock].sample
   end
 
   def evaluate_game
-    if @user == @computer
+    if @player1.choice == @player2.choice
       return :draw
     end
-    @winning_pairs.include?([@user, @computer]) ? @winner = true : @winner = false
+    if @winning_pairs.include?([@player1.choice, @player2.choice])
+      @player1.winner = true
+      @winner = @player1
+    else
+      @player2.winner = false
+      @winner = @player2
+    end
   end
+
 end

@@ -1,19 +1,35 @@
 require 'rock_paper_scissors'
 describe Game do
-  it "can take user selection and assign to attribute" do
-    choice = subject.selection("paper")
-    expect(subject.user).to eq :paper
+  before :each do
+    @game = Game.new
+  end
+  it "Declars winner when Paper beats Rock" do
+    player1 = double :player1, choice: :paper
+    player2 = double :player2, choice: :rock
+    @game.evaluate_game
+    expect(@game.winner).to eq @game.player1
   end
 
-  it "randomly assigns computer selection" do
-    computer = subject.computer_choice
-    expect(subject.computer).to eq computer
+  it "Declars Draw when both players choose Rock" do
+    player1 = double :player1, choice: :rock
+    player2 = double :player2, choice: :rock
+    expect(@game.evaluate_game).to eq :draw
   end
 
-  it "evaluates the game and declares winner, or draw" do
-    allow(subject.computer).to receive :Paper
-    allow(subject.user).to receive :Rock
-    subject.evaluate_game
-    expect(subject.winner).to eq subject.computer
+  it "Declares winner when Rock beats Scissors" do
+    player1 = double :player1, choice: :scissor
+    player2 = double :player2, choice: :rock
+    @game.evaluate_game
+    p @game.winner
+    p @game.player2
+    expect(@game.winner).to eq @game.player2
   end
+
+  it "Declares winner when Scissors beats paper" do
+    player1 = double :player1, choice: :scissors
+    player2 = double :player2, choice: :paper
+    @game.evaluate_game
+    expect(@game.winner).to eq @game.player1
+  end
+
 end

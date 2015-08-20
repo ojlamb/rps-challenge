@@ -10,30 +10,24 @@ class RPS < Sinatra::Base
   end
 
   post '/gamepage' do
-    params[:name] == "" ? @name = "Player 1" : @name = params[:name]
+    if params[:name] == ""
+      @name = "Player 1"
+    else
+      @name = params[:name]
+    end
     session[:name] = @name
-    $game ? $game : $game = initialize_game
+    $game ||= Game.new
     erb :gamepage
   end
 
   post '/shoot' do
-    @player_choice = $game.selection(params[:choice])
-    @comp_choice = $game.computer_choice
-    outcome = $game.evaluate_game
-    if outcome == true
-      @win = true
-    elsif outcome == false
-      @win = false
-    elsif outcome == :draw
-      @win = "Draw"
-    end
     @name = session[:name]
+    @player1_choice = $game.player1.selection(params[:choice])
+    @player2_choice = $game.player2.selection
+    @outcome = $game.evaluate_game
     erb :gamepage
   end
-
-  def initialize_game
-    game = Game.new
-  end
+  
   # start the server if ruby file executed directly
   run! if app_file == $0
 end
