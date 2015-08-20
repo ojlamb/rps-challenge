@@ -32,11 +32,11 @@
   </form>
 </div>
 <div>
-  <% if $game.winner == $game.player1%>
+  <% if $game.winner == :player1%>
     <h1>And the winner is...<%=@name%></h1>
-  <% elsif $game.winner == $game.player2%>
+  <% elsif $game.winner == :player2%>
     <h1>And the winner is...Computer. </h1>
-  <% elsif @outcome == "Draw" %>
+  <% elsif @outcome == :draw %>
     <h1>And the winner is...Draw! Try again!</h1>
   <% end %>
 </div>

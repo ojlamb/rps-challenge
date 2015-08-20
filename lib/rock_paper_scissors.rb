@@ -16,10 +16,10 @@ class Game
     end
     if @winning_pairs.include?([@player1.choice, @player2.choice])
       @player1.winner = true
-      @winner = @player1
+      @winner = :player1
     else
-      @player2.winner = false
-      @winner = @player2
+      @player2.winner = true
+      @winner = :player2
     end
   end
 

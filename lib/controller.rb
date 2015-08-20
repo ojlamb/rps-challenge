@@ -27,7 +27,6 @@ class RPS < Sinatra::Base
     @outcome = $game.evaluate_game
     erb :gamepage
   end
-  
   # start the server if ruby file executed directly
   run! if app_file == $0
 end

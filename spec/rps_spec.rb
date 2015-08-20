@@ -9,7 +9,7 @@ describe Game do
     allow(@game.player1).to receive(:winner=).and_return(nil)
     allow(@game.player2).to receive(:winner=).and_return(nil)
     @game.evaluate_game
-    expect(@game.winner).to eq @game.player1
+    expect(@game.winner).to eq :player1
   end
 
   it "Declars Draw when both players choose Rock" do
@@ -24,7 +24,7 @@ describe Game do
     allow(@game.player1).to receive(:winner=).and_return(nil)
     allow(@game.player2).to receive(:winner=).and_return(nil)
     @game.evaluate_game
-    expect(@game.winner).to eq @game.player2
+    expect(@game.winner).to eq :player2
   end
 
   it "Declares winner when Scissors beats paper" do
@@ -33,7 +33,7 @@ describe Game do
     allow(@game.player1).to receive(:winner=).and_return(nil)
     allow(@game.player2).to receive(:winner=).and_return(nil)
     @game.evaluate_game
-    expect(@game.winner).to eq @game.player1
+    expect(@game.winner).to eq :player1
   end
 
 end
