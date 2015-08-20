@@ -10,8 +10,12 @@ group :test do
   gem 'rubocop'
   gem 'coveralls'
   gem 'capybara'
-  gem 'byebug'
   gem 'launchy'
   gem 'shotgun'
   gem 'rspec-sinatra'
 end
+
+group :development do 
+  gem 'byebug'
+end
+
