@@ -10,14 +10,11 @@ feature "Playing the game" do
     end
   end
 
-  context 'clicks on radio button' do
-    # before { @outcome = outcome }
-    scenario "User makes a selection and the game outcome is evaluated" do
-      # byebug
-      find(:css, ".radio[value='Rock']").set(true)
-      click_on 'Shoot'
-      byebug
-      expect(page).to have_content("And the winner is...Player 1")
-    end
-  end
+  # context 'clicks on radio button' do
+  #   scenario "User makes a selection and the game outcome is evaluated" do
+  #     find(:css, ".radio[value='Rock']").set(true)
+  #     click_on 'Shoot'
+  #     expect(page).to have_content("And the winner is...Player 1")
+  #   end
+  # end
 end
