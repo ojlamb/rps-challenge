@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/ojlamb/rps-challenge.svg?branch=master)](https://travis-ci.org/ojlamb/rps-challenge)
+
 # RPS Challenge:
 Makers Academy week 3 challenge is to develop a Rock Paper Scissors game online. The purpose of the project is to develop better understanding of the web and the web framework Sinatra. Additionally, the project  explores how developers craft solid unit and feature tests based on game logic.
 
